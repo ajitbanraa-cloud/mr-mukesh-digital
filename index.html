@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mr. MUKESH Digital | Online PVC Order</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f2f5f9;
+}
+header{
+    background:#0b5ed7;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+.container{
+    padding:20px;
+}
+.card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    max-width:520px;
+    margin:auto;
+}
+input, select{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:8px;
+    font-size:17px;
+    cursor:pointer;
+    margin-top:10px;
+}
+.whatsapp{
+    background:#25D366;
+    color:white;
+}
+.upi{
+    background:#000;
+    color:white;
+}
+.note{
+    font-size:13px;
+    color:#555;
+    margin-top:10px;
+}
+footer{
+    text-align:center;
+    padding:15px;
+    font-size:14px;
+    color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>Mr. MUKESH Digital</h2>
+<p>CSC Centre – Shyamsundarpur</p>
+</header>
+
+<div class="container">
+<div class="card">
+
+<h3>Online PVC Card Order</h3>
+
+<input type="text" id="name" placeholder="Customer Name">
+<input type="text" id="mobile" placeholder="Mobile Number">
+<input type="text" id="village" placeholder="Village / Location">
+
+<select id="card">
+<option value="">Select Card Type</option>
+<option>Aadhaar Card</option>
+<option>PAN Card</option>
+<option>Ration Card</option>
+<option>Voter ID</option>
+<option>Ayushman Card</option>
+<option>APAAR ID</option>
+<option>Driving Licence</option>
+<option>School ID</option>
+</select>
+
+<label><b>Upload Document (Photo / PDF)</b></label>
+<input type="file" id="file">
+
+<button class="whatsapp" onclick="sendWhatsApp()">📲 Send Order on WhatsApp</button>
+
+<button class="upi" onclick="payUPI()">💳 Pay via UPI</button>
+
+<p class="note">
+⚠ After WhatsApp opens, please attach the selected file manually and send.
+</p>
+
+</div>
+</div>
+
+<footer>
+Premium PVC Card Printing | Fast & Trusted CSC Service
+</footer>
+
+<script>
+function sendWhatsApp(){
+    var name = document.getElementById("name").value;
+    var mobile = document.getElementById("mobile").value;
+    var village = document.getElementById("village").value;
+    var card = document.getElementById("card").value;
+    var file = document.getElementById("file").files.length > 0 
+        ? "File selected (please attach)" 
+        : "No file selected";
+
+    var msg =
+    "Hello 👋 I want to order a PVC Card.%0A%0A"+
+    "Name: "+name+"%0A"+
+    "Mobile: "+mobile+"%0A"+
+    "Village: "+village+"%0A"+
+    "Card Type: "+card+"%0A"+
+    "Document: "+file+"%0A%0A"+
+    "I will send the document now.";
+
+    var phone = "91XXXXXXXXXX"; // apna WhatsApp number
+
+    window.open("https://wa.me/"+phone+"?text="+msg, "_blank");
+}
+
+function payUPI(){
+    var upiId = "yourupi@bank"; // apna UPI ID
+    var name = "Mr MUKESH Digital";
+    var amount = ""; // optional
+
+    var upiURL = 
+    "upi://pay?pa="+upiId+
+    "&pn="+name+
+    "&am="+amount+
+    "&cu=INR";
+
+    window.location.href = upiURL;
+}
+</script>
+
+</body>
+</html>
